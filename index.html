@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>OAAC Demo</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f5f5f5; }
+        #login, #content { background: white; padding: 20px; border-radius: 4px; box-shadow: 0 0 10px rgba(0,0,0,0.1); width: 300px; }
+        #login input { width: 100%; padding: 8px; margin-bottom: 10px; }
+        #content { display: none; }
+    </style>
+</head>
+<body>
+<div id="login">
+    <h2>登录</h2>
+    <input type="text" id="username" placeholder="用户名" />
+    <input type="password" id="password" placeholder="密码" />
+    <button id="loginBtn">登录</button>
+</div>
+<div id="content">
+    <h2>图生图/文生图</h2>
+    <p>这里是图生图和文生图的内容页面。</p>
+</div>
+<script>
+    function showContent() {
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+    }
+    if (localStorage.getItem('loggedIn')) {
+        showContent();
+    }
+    document.getElementById('loginBtn').addEventListener('click', function () {
+        // 简单示例：任何输入都会登录成功
+        localStorage.setItem('loggedIn', 'true');
+        showContent();
+    });
+</script>
+</body>
+</html>
